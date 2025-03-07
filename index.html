@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy Style Header</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="shortcut icon" href="swiggy img.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff5200;
+            padding: 1rem 2rem;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .dropdown {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .search-box {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .cart-icon, .search-icon {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover, .search-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .wish, .best-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .food-container, .best-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .food-item img, .best-item img {
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .food-item img:hover, .best-item img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="left-section">
+            <img src="swiggy img.jpeg" alt="Swiggy Icon" class="logo">
+            <a href="index.html"></a>
+            
+                <select id="location" class="dropdown">
+                    <option>Select Location</option>
+                    <option>Bangalore</option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                </select>
+
+        </div>
+        <nav class="nav-links">
+            <a href="offers.html">Offers <i class="fa-solid fa-percent"></i></a>
+            <a href="help.html">Help <i class="fa-solid fa-circle-info"></i></a>
+            <a href="signin.html">Sign In <i class="fa-solid fa-circle-user"></i></a>
+            <a href="cart.html" class="cart-icon"> Cart <i class="fa-solid fa-cart-shopping"></i></a>
+            <input type="text" placeholder="Search..." class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </nav>
+    </header>
+
+    <div class="wish">
+        <h2 class="title">What's on your mind?</h2>
+        <div class="food-container">
+            <div class="food-item">
+                <img src="biryani.jpeg" alt="biryani">
+                <p>Burger</p>
+            </div>
+            <div class="food-item">
+                <img src="chicken65.jpeg" alt="chicken65">
+                <p>Pizza</p>
+            </div>
+            <div class="food-item">
+                <img src="chickenchilli.jpeg" alt="chickenchilli">
+                <p>Biryani</p>
+            </div>
+            <div class="food-item">
+                <img src="ice cream.jpeg" alt="Ice Cream">
+                <p>Ice Cream</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="best-section">
+        <h2>Best Places to Eat</h2>
+        <div class="best-list">
+            <div class="best-item"><img src="Restaurant 2.jpeg" alt="The Food Hub"></div>
+            <div class="best-item"><img src="restaurant3.jpeg" alt="Urban Tandoor"> Urban Tandoor</div>
+            <div class="best-item"><img src="restaurant4.jpeg" alt="Spicy Treat"> Spicy Treat</div>
+            <div class="best-item"><img src="Golden Spoon.jpeg" alt="Golden Spoon"> Golden Spoon</div>
+        </div>
+    </section>
+
+    <section class="best-section">
+        <h2>Best Foods to Try</h2>
+        <div class="best-list">
+            <div class="best-item"><img src="chickenchilli.jpeg" alt="chickenchilli"> chickenchilli</div>
+            <div class="best-item"><img src="pasta.jpeg" alt="Pasta Alfredo"> Pasta Alfredo</div>
+            <div class="best-item"><img src="sandwich.jpeg" alt="Grilled Sandwich"> Grilled Sandwich</div>
+            <div class="best-item"><img src="lava_cake.jpeg" alt="Chocolate Lava Cake"> Chocolate Lava Cake</div>
+        </div>
+    </section>
+</body>
+</html>

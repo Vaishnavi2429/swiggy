@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy - Cart</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="shortcut icon" href="swiggy img.jpeg" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .cart-container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            align-items: center;
+        }
+        .item button {
+            padding: 5px 10px;
+            background-color: #fc8019;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cart {
+            margin-top: 20px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            align-items: center;
+        }
+        .cart-item button {
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .checkout-btn:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="left">
+            <img src="swiggy img.jpeg" alt="Swiggy" class="logo">
+            <form action="#">
+                <label for="location">Choose Location:</label>
+                <select id="location" class="dropdown">
+                    <option>Select Location</option>
+                    <option>Bangalore</option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                </select>
+            </form>
+        </div>
+
+        <nav class="right">
+            <a href="offers.html"><i class="fa-solid fa-percent"></i> Offers</a>
+            <a href="help.html"><i class="fa-solid fa-life-ring"></i> Help</a>
+            <a href="signin.html"><i class="fa-solid fa-user"></i> Sign In</a>
+            <a href="cart.html" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+            
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-container">
+            <h2>Food Items</h2>
+            
+            <div class="items-list">
+                <div class="item">
+                    <span>biryani - $10</span>
+                    <button onclick="addToCart('biryani', 10)">Add</button>
+                </div>
+                <div class="item">
+                    <span>chicken65 - $5</span>
+                    <button onclick="addToCart('chicken65', 5)">Add</button>
+                </div>
+                <div class="item">
+                    <span>chickenchilli - $8</span>
+                    <button onclick="addToCart('chickenchilli', 8)">Add</button>
+                </div>
+                <div class="item">
+                    <span>Ice Cream - $4</span>
+                    <button onclick="addToCart('Ice Cream', 4)">Add</button>
+                </div>
+            </div>
+
+            <section class="cart">
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div class="total">Total: $<span id="total-price">0</span></div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            totalPrice += price;
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            totalPrice -= cart[index].price;
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            cart.forEach((item, index) => {
+                let cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.innerHTML = `
+                    <span>${item.name} - $${item.price}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            document.getElementById("total-price").textContent = totalPrice;
+        }
+    </script>
+
+</body>
+</html>
